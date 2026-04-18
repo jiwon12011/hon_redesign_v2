@@ -613,7 +613,7 @@ input { font: inherit; }
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  min-height: 130px;
+  min-height: 180px;
 }
 .lounge-card__art--lounge {
   background: linear-gradient(145deg, #1a0d20, #3a1020, #0d1a2a);
