@@ -3,282 +3,542 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>귀혼 — 혼을 잇는 세계</title>
+  <title>귀혼 — 혼을 잇는 강호</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-  <!-- ── NAV ── -->
+  <!-- ══════════════════════════
+       NAV
+  ══════════════════════════ -->
   <nav class="nav" id="nav">
-    <div class="nav__logo">
-      <span class="nav__logo-kr">귀혼</span>
-      <span class="nav__logo-divider"></span>
-      <span class="nav__logo-en">GHOST</span>
+    <div class="nav__inner">
+      <a href="#" class="nav__logo">
+        <span class="nav__logo-box">귀</span>
+        <span class="nav__logo-text">귀혼</span>
+      </a>
+      <ul class="nav__links">
+        <li><a href="#news">소식</a></li>
+        <li><a href="#guide">가이드</a></li>
+        <li><a href="#ranking">랭킹</a></li>
+        <li><a href="#community">커뮤니티</a></li>
+        <li><a href="#support">고객지원</a></li>
+      </ul>
+      <div class="nav__actions">
+        <a href="#" class="nav__login">로그인</a>
+        <a href="#" class="btn btn--flame btn--sm">▶ 설치</a>
+      </div>
+      <button class="nav__hamburger" id="hamburger" aria-label="메뉴 열기">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-    <ul class="nav__links">
-      <li><a href="#intro">소개</a></li>
-      <li><a href="#ranking">랭킹</a></li>
-      <li><a href="#news">새소식</a></li>
-      <li><a href="#community">커뮤니티</a></li>
-      <li><a href="#" class="nav__cta">게임 시작</a></li>
-    </ul>
-    <button class="nav__hamburger" id="hamburger" aria-label="메뉴">
-      <span></span><span></span><span></span>
-    </button>
   </nav>
 
-  <!-- ── HERO ── -->
-  <section class="hero" id="intro">
-    <div class="hero__parallax" id="heroParallax">
-      <div class="hero__ink-layer hero__ink-layer--1"></div>
-      <div class="hero__ink-layer hero__ink-layer--2"></div>
-      <div class="hero__ink-layer hero__ink-layer--3"></div>
+  <!-- mobile drawer -->
+  <div class="nav__drawer" id="navDrawer">
+    <ul>
+      <li><a href="#news">소식</a></li>
+      <li><a href="#guide">가이드</a></li>
+      <li><a href="#ranking">랭킹</a></li>
+      <li><a href="#community">커뮤니티</a></li>
+      <li><a href="#support">고객지원</a></li>
+    </ul>
+    <a href="#" class="btn btn--flame" style="margin-top:1.5rem;width:100%;justify-content:center;">▶ 설치</a>
+  </div>
+
+  <!-- ══════════════════════════
+       HERO
+  ══════════════════════════ -->
+  <section class="hero" id="hero">
+    <!-- ink wash layers -->
+    <div class="hero__ink">
+      <div class="hero__ink-blob hero__ink-blob--1"></div>
+      <div class="hero__ink-blob hero__ink-blob--2"></div>
+      <div class="hero__ink-blob hero__ink-blob--3"></div>
     </div>
+
+    <!-- calligraphy left -->
+    <div class="hero__calligraphy" aria-hidden="true">
+      <span>혼</span>
+      <span>을</span>
+      <span>잇</span>
+      <span>는</span>
+      <span>강</span>
+      <span>호</span>
+    </div>
+
+    <!-- center content -->
     <div class="hero__content">
-      <p class="hero__eyebrow">2025 귀혼 리뉴얼</p>
+      <p class="hero__season">NEW SEASON OPEN</p>
       <h1 class="hero__title">
-        <span class="hero__title-line">혼을 잇는</span>
-        <span class="hero__title-line hero__title-line--accent">세계로</span>
+        <img src="assets/logo-hero.png" alt="귀혼" class="hero__logo-img" onerror="this.style.display='none'" />
+        <span class="hero__logo-fallback">귀혼</span>
       </h1>
-      <p class="hero__subtitle">동양 판타지의 정수 — 전통과 현대가 만나다</p>
+      <div class="hero__rating">
+        <span class="hero__stars">★★★★☆</span>
+        <span>4.8 / 5.0</span>
+        <span class="hero__dot">·</span>
+        <span>128만 명의 선택</span>
+      </div>
       <div class="hero__actions">
-        <a href="#" class="btn btn--primary">무료 플레이</a>
-        <a href="#intro" class="btn btn--ghost">세계관 보기</a>
+        <a href="#" class="btn btn--flame btn--lg">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+          귀혼M 설치
+        </a>
+        <a href="#" class="btn btn--charcoal btn--lg">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20 18H4V6h16v12zM4 4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2H4z"/></svg>
+          PC 다운로드
+        </a>
       </div>
     </div>
+
+    <!-- character right (placeholder art) -->
+    <div class="hero__character" aria-hidden="true">
+      <div class="hero__char-silhouette"></div>
+    </div>
+
     <div class="hero__scroll-hint">
       <span>SCROLL</span>
       <div class="hero__scroll-line"></div>
     </div>
   </section>
 
-  <!-- ── BENTO GRID ── -->
-  <main class="bento" id="ranking">
+  <!-- ══════════════════════════
+       ANNOUNCEMENT TICKER
+  ══════════════════════════ -->
+  <div class="ticker">
+    <div class="ticker__inner">
+      <div class="ticker__tags">
+        <span class="ticker__tag ticker__tag--flame">패치</span>
+        <span class="ticker__tag ticker__tag--aqua">이벤트</span>
+        <span class="ticker__tag ticker__tag--gray">공지</span>
+      </div>
+      <div class="ticker__track" aria-live="polite">
+        <span class="ticker__item">🔥 새로운 세계 보스 '천마' 등장 — 지금 도전하세요</span>
+        <span class="ticker__sep">◈</span>
+        <span class="ticker__item">귀신의 밤 이벤트 7.10 ~ 7.31 — 전설 무기 선택권 획득 가능</span>
+        <span class="ticker__sep">◈</span>
+        <span class="ticker__item">7월 정기 점검 안내 (07.14 04:00 ~ 08:00)</span>
+        <span class="ticker__sep">◈</span>
+        <span class="ticker__item">2.4.1 핫픽스 — 검귀 스킬 충돌 버그 수정 완료</span>
+        <span class="ticker__sep">◈</span>
+        <span class="ticker__item">🔥 새로운 세계 보스 '천마' 등장 — 지금 도전하세요</span>
+        <span class="ticker__sep">◈</span>
+        <span class="ticker__item">귀신의 밤 이벤트 7.10 ~ 7.31 — 전설 무기 선택권 획득 가능</span>
+        <span class="ticker__sep">◈</span>
+        <span class="ticker__item">7월 정기 점검 안내 (07.14 04:00 ~ 08:00)</span>
+        <span class="ticker__sep">◈</span>
+        <span class="ticker__item">2.4.1 핫픽스 — 검귀 스킬 충돌 버그 수정 완료</span>
+      </div>
+    </div>
+  </div>
 
-    <!-- 1. 랭킹 — large -->
-    <article class="bento__card bento__card--ranking" data-reveal>
-      <header class="card-header">
-        <span class="card-header__tag">실시간</span>
-        <h2 class="card-header__title">서버 랭킹</h2>
+  <!-- ══════════════════════════
+       SPLIT — 소식 + 커뮤니티
+  ══════════════════════════ -->
+  <section class="split" id="news">
+    <!-- LEFT: 강호의 소식 -->
+    <div class="split__left">
+      <header class="section-header">
+        <span class="section-tag">NEWS</span>
+        <h2 class="section-title">강호의 소식</h2>
+        <nav class="news__tabs" role="tablist">
+          <button class="tab tab--active" data-tab="all">전체</button>
+          <button class="tab" data-tab="update">업데이트</button>
+          <button class="tab" data-tab="event">이벤트</button>
+          <button class="tab" data-tab="notice">공지</button>
+        </nav>
       </header>
-      <ol class="ranking__list">
-        <li class="ranking__item ranking__item--gold">
-          <span class="ranking__rank">01</span>
-          <div class="ranking__avatar" style="--hue:30"></div>
-          <div class="ranking__info">
-            <strong>천마검귀</strong>
-            <span>천마문 · Lv.210</span>
+
+      <!-- featured card -->
+      <div class="news__featured" data-reveal>
+        <div class="news__featured-img">
+          <div class="news__img-placeholder news__img-placeholder--event"></div>
+          <span class="news__featured-badge">이벤트</span>
+        </div>
+        <div class="news__featured-body">
+          <p class="news__featured-date">2025.07.10</p>
+          <h3 class="news__featured-title">귀신의 밤 — 한여름의 혼령 대축제</h3>
+          <p class="news__featured-desc">7월 한 달간 진행되는 대형 시즌 이벤트. 전설 등급 무기 선택권, 환상마 탑승물 등 역대 최대 보상.</p>
+        </div>
+      </div>
+
+      <!-- news list -->
+      <ul class="news__list">
+        <li class="news__item" data-reveal>
+          <div class="news__thumb news__thumb--patch"></div>
+          <div class="news__body">
+            <span class="news__type news__type--patch">패치</span>
+            <h4>2.4.1 핫픽스 — 검귀 스킬 버그 수정 및 밸런스 조정</h4>
+            <time>2025.07.12</time>
           </div>
-          <span class="ranking__score">9,841,200</span>
         </li>
-        <li class="ranking__item ranking__item--silver">
-          <span class="ranking__rank">02</span>
-          <div class="ranking__avatar" style="--hue:200"></div>
-          <div class="ranking__info">
-            <strong>백련도화</strong>
-            <span>수라문 · Lv.208</span>
+        <li class="news__item" data-reveal>
+          <div class="news__thumb news__thumb--notice"></div>
+          <div class="news__body">
+            <span class="news__type news__type--notice">공지</span>
+            <h4>7월 정기 점검 안내 (07.14 04:00 ~ 08:00)</h4>
+            <time>2025.07.09</time>
           </div>
-          <span class="ranking__score">9,720,500</span>
         </li>
-        <li class="ranking__item ranking__item--bronze">
-          <span class="ranking__rank">03</span>
-          <div class="ranking__avatar" style="--hue:260"></div>
-          <div class="ranking__info">
-            <strong>화산제일검</strong>
-            <span>화산문 · Lv.207</span>
+        <li class="news__item" data-reveal>
+          <div class="news__thumb news__thumb--update"></div>
+          <div class="news__body">
+            <span class="news__type news__type--update">업데이트</span>
+            <h4>신규 던전 '귀문관' 오픈 — 최대 4인 도전</h4>
+            <time>2025.07.05</time>
           </div>
-          <span class="ranking__score">9,614,800</span>
         </li>
-        <li class="ranking__item">
-          <span class="ranking__rank">04</span>
-          <div class="ranking__avatar" style="--hue:150"></div>
-          <div class="ranking__info">
-            <strong>독행마인</strong>
-            <span>마교 · Lv.205</span>
+        <li class="news__item" data-reveal>
+          <div class="news__thumb news__thumb--notice"></div>
+          <div class="news__body">
+            <span class="news__type news__type--notice">공지</span>
+            <h4>하반기 업데이트 로드맵 공개</h4>
+            <time>2025.07.01</time>
           </div>
-          <span class="ranking__score">9,390,100</span>
         </li>
-        <li class="ranking__item">
-          <span class="ranking__rank">05</span>
-          <div class="ranking__avatar" style="--hue:340"></div>
-          <div class="ranking__info">
-            <strong>설화빙령</strong>
-            <span>빙화문 · Lv.203</span>
+      </ul>
+      <a href="#" class="btn btn--outline btn--sm" style="margin-top:1.5rem">전체 소식 보기 →</a>
+    </div>
+
+    <!-- RIGHT: 커뮤니티 인기글 -->
+    <div class="split__right" id="community">
+      <header class="section-header">
+        <span class="section-tag">COMMUNITY</span>
+        <h2 class="section-title">커뮤니티 인기글</h2>
+        <span class="live-badge">● LIVE</span>
+      </header>
+      <ol class="hot-list">
+        <li class="hot-list__item" data-reveal>
+          <span class="hot-list__rank hot-list__rank--1">1</span>
+          <div class="hot-list__body">
+            <h4>검귀로 천마 5분 클리어 — 공략 영상 공유</h4>
+            <span class="hot-list__meta">자유게시판 · 조회 9.8k</span>
           </div>
-          <span class="ranking__score">9,280,900</span>
+          <span class="hot-list__score">9.8k</span>
+        </li>
+        <li class="hot-list__item" data-reveal>
+          <span class="hot-list__rank hot-list__rank--2">2</span>
+          <div class="hot-list__body">
+            <h4>귀신의 밤 이벤트 효율 정리 (보상 루트)</h4>
+            <span class="hot-list__meta">공략게시판 · 조회 7.2k</span>
+          </div>
+          <span class="hot-list__score">7.2k</span>
+        </li>
+        <li class="hot-list__item" data-reveal>
+          <span class="hot-list__rank hot-list__rank--3">3</span>
+          <div class="hot-list__body">
+            <h4>복귀 유저 가이드 — 무엇부터 해야 할까?</h4>
+            <span class="hot-list__meta">질문게시판 · 조회 5.5k</span>
+          </div>
+          <span class="hot-list__score">5.5k</span>
+        </li>
+        <li class="hot-list__item" data-reveal>
+          <span class="hot-list__rank">4</span>
+          <div class="hot-list__body">
+            <h4>2025 하반기 직업별 티어 정리</h4>
+            <span class="hot-list__meta">공략게시판 · 조회 3.8k</span>
+          </div>
+          <span class="hot-list__score">3.8k</span>
+        </li>
+        <li class="hot-list__item" data-reveal>
+          <span class="hot-list__rank">5</span>
+          <div class="hot-list__body">
+            <h4>핫픽스 이후 독왕 빌드 변경점 공유</h4>
+            <span class="hot-list__meta">공략게시판 · 조회 2.6k</span>
+          </div>
+          <span class="hot-list__score">2.6k</span>
         </li>
       </ol>
-      <a href="#" class="card-link">전체 랭킹 보기 →</a>
-    </article>
+      <a href="#" class="btn btn--outline btn--sm" style="margin-top:1.5rem">커뮤니티 전체 →</a>
+    </div>
+  </section>
 
-    <!-- 2. 업데이트 메인 -->
-    <article class="bento__card bento__card--update" id="news" data-reveal>
-      <div class="update__badge">NEW</div>
-      <header class="card-header">
-        <span class="card-header__tag">패치노트</span>
-        <h2 class="card-header__title">새벽의 혼 업데이트</h2>
+  <!-- ══════════════════════════
+       BENTO — 명예와 비급
+  ══════════════════════════ -->
+  <section class="honor-section" id="ranking" id="guide">
+    <div class="honor-section__inner">
+      <header class="section-header section-header--center" data-reveal>
+        <span class="section-tag">HALL OF FAME &amp; BEGINNER'S GUIDE</span>
+        <h2 class="section-title">명예와 비급</h2>
       </header>
-      <p class="update__desc">신규 던전 <em>귀문관</em>이 열립니다. 전설급 무기 '천잠사' 획득 가능, 최대 4인 파티 도전!</p>
-      <div class="update__tags">
-        <span class="tag">신규 던전</span>
-        <span class="tag">장비 추가</span>
-        <span class="tag">밸런스 조정</span>
-      </div>
-      <time class="update__date">2025. 07. 15</time>
-    </article>
 
-    <!-- 3. 서버 상태 -->
-    <article class="bento__card bento__card--status" data-reveal>
-      <header class="card-header">
-        <span class="card-header__tag">서버</span>
-        <h2 class="card-header__title">현재 상태</h2>
-      </header>
-      <ul class="status__list">
-        <li class="status__item status__item--online">
-          <span class="status__dot"></span>
-          <span class="status__name">청룡 서버</span>
-          <span class="status__load">●●●○○</span>
-        </li>
-        <li class="status__item status__item--online">
-          <span class="status__dot"></span>
-          <span class="status__name">백호 서버</span>
-          <span class="status__load">●●●●○</span>
-        </li>
-        <li class="status__item status__item--busy">
-          <span class="status__dot"></span>
-          <span class="status__name">현무 서버</span>
-          <span class="status__load">●●●●●</span>
-        </li>
-        <li class="status__item status__item--online">
-          <span class="status__dot"></span>
-          <span class="status__name">주작 서버</span>
-          <span class="status__load">●●○○○</span>
-        </li>
-      </ul>
-      <p class="status__total"><strong id="onlineCount">24,381</strong>명 접속 중</p>
-    </article>
+      <div class="honor-grid">
 
-    <!-- 4. 캐릭터 쇼케이스 -->
-    <article class="bento__card bento__card--character" data-reveal>
-      <div class="character__bg"></div>
-      <div class="character__content">
-        <span class="card-header__tag">직업</span>
-        <h2 class="character__name">검귀</h2>
-        <p class="character__desc">혼을 담은 검으로 적을 베는 근거리 특화 딜러</p>
-        <div class="character__stats">
-          <div class="stat"><span class="stat__label">공격</span><div class="stat__bar"><div class="stat__fill" style="--pct:92%"></div></div></div>
-          <div class="stat"><span class="stat__label">방어</span><div class="stat__bar"><div class="stat__fill" style="--pct:55%"></div></div></div>
-          <div class="stat"><span class="stat__label">속도</span><div class="stat__bar"><div class="stat__fill" style="--pct:78%"></div></div></div>
+        <!-- 영광의 전당 -->
+        <div class="honor-card honor-card--hall" data-reveal>
+          <header class="card-header">
+            <h3 class="card-title">영광의 전당</h3>
+            <span class="card-sub">이번 시즌 최고 명성 강자</span>
+          </header>
+          <ol class="hall__list">
+            <li class="hall__item hall__item--1">
+              <span class="hall__rank">1</span>
+              <div class="hall__avatar" style="--hue:30"></div>
+              <div class="hall__info">
+                <strong>천마검귀</strong>
+                <span class="hall__server">청룡 서버</span>
+              </div>
+              <span class="hall__title hall__title--legend">전설</span>
+              <span class="hall__score">9,841,200</span>
+            </li>
+            <li class="hall__item hall__item--2">
+              <span class="hall__rank">2</span>
+              <div class="hall__avatar" style="--hue:200"></div>
+              <div class="hall__info">
+                <strong>백련도화</strong>
+                <span class="hall__server">백호 서버</span>
+              </div>
+              <span class="hall__title hall__title--epic">영웅</span>
+              <span class="hall__score">9,720,500</span>
+            </li>
+            <li class="hall__item hall__item--3">
+              <span class="hall__rank">3</span>
+              <div class="hall__avatar" style="--hue:260"></div>
+              <div class="hall__info">
+                <strong>화산제일검</strong>
+                <span class="hall__server">주작 서버</span>
+              </div>
+              <span class="hall__title hall__title--epic">영웅</span>
+              <span class="hall__score">9,614,800</span>
+            </li>
+          </ol>
+          <div class="hall__filters">
+            <button class="pill pill--active">명성</button>
+            <button class="pill">전투력</button>
+            <button class="pill">외호</button>
+          </div>
+          <a href="#" class="btn btn--outline btn--sm" style="margin-top:1rem">전체 랭킹 →</a>
         </div>
-        <div class="character__switch">
-          <button class="char-btn char-btn--active" data-char="검귀">검귀</button>
-          <button class="char-btn" data-char="독왕">독왕</button>
-          <button class="char-btn" data-char="화령">화령</button>
-          <button class="char-btn" data-char="빙선">빙선</button>
+
+        <!-- 강호 검색 -->
+        <div class="honor-card honor-card--search" data-reveal>
+          <header class="card-header">
+            <h3 class="card-title">강호 검색</h3>
+          </header>
+          <div class="search-box">
+            <input type="search" placeholder="캐릭터 이름 검색…" class="search-input" />
+            <button class="search-btn" aria-label="검색">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            </button>
+          </div>
+          <ul class="search-results">
+            <li class="search-result">
+              <div class="hall__avatar" style="--hue:150;width:32px;height:32px"></div>
+              <div>
+                <strong>독행마인</strong>
+                <span>현무 · Lv.205 독왕</span>
+              </div>
+              <button class="pill">보기</button>
+            </li>
+            <li class="search-result">
+              <div class="hall__avatar" style="--hue:340;width:32px;height:32px"></div>
+              <div>
+                <strong>설화빙령</strong>
+                <span>청룡 · Lv.203 빙선</span>
+              </div>
+              <button class="pill">보기</button>
+            </li>
+          </ul>
         </div>
+
+        <!-- 강호의 비급 (beginner guide) -->
+        <div class="honor-card honor-card--guide" data-reveal id="guide">
+          <header class="card-header">
+            <h3 class="card-title">강호의 비급</h3>
+            <span class="card-sub">신규 &amp; 복귀 유저 필독 가이드</span>
+          </header>
+          <div class="guide-grid">
+            <a href="#" class="guide-item" data-reveal>
+              <div class="guide-item__icon guide-item__icon--1">⚔</div>
+              <strong>첫 무공 선택</strong>
+              <span>직업별 특성과 추천 빌드</span>
+            </a>
+            <a href="#" class="guide-item" data-reveal>
+              <div class="guide-item__icon guide-item__icon--2">🏯</div>
+              <strong>강호 입문 퀘스트</strong>
+              <span>스토리 흐름과 보상 정리</span>
+            </a>
+            <a href="#" class="guide-item" data-reveal>
+              <div class="guide-item__icon guide-item__icon--3">👥</div>
+              <strong>문파 가입 방법</strong>
+              <span>혜택과 활동 콘텐츠 안내</span>
+            </a>
+            <a href="#" class="guide-item" data-reveal>
+              <div class="guide-item__icon guide-item__icon--4">💎</div>
+              <strong>귀혼석 효율 사용법</strong>
+              <span>초보자 필수 경제 가이드</span>
+            </a>
+          </div>
+        </div>
+
       </div>
-    </article>
+    </div>
+  </section>
 
-    <!-- 5. 이벤트 -->
-    <article class="bento__card bento__card--event" data-reveal>
-      <header class="card-header">
-        <span class="card-header__tag">기간한정</span>
-        <h2 class="card-header__title">귀신의 밤 이벤트</h2>
+  <!-- ══════════════════════════
+       SOCIAL TILES — 강호의 인연
+  ══════════════════════════ -->
+  <section class="social-section" id="social">
+    <div class="social-section__inner">
+      <header class="section-header section-header--center" data-reveal>
+        <span class="section-tag">SOCIAL CONNECTIONS</span>
+        <h2 class="section-title">강호의 인연</h2>
+        <p class="section-desc">귀혼에서만 경험할 수 있는 특별한 유대감의 시스템</p>
       </header>
-      <div class="event__countdown" id="countdown">
-        <div class="countdown__unit"><span id="cd-days">07</span><small>일</small></div>
-        <div class="countdown__sep">:</div>
-        <div class="countdown__unit"><span id="cd-hours">14</span><small>시간</small></div>
-        <div class="countdown__sep">:</div>
-        <div class="countdown__unit"><span id="cd-mins">32</span><small>분</small></div>
+      <div class="social-tiles">
+
+        <!-- 천생연분 -->
+        <div class="social-tile" data-reveal>
+          <div class="social-tile__art social-tile__art--marriage">
+            <span class="social-tile__icon">💍</span>
+          </div>
+          <div class="social-tile__body">
+            <span class="social-tile__tag">LOVE · 인연</span>
+            <h3 class="social-tile__title">천생연분</h3>
+            <p class="social-tile__sub">Marriage System</p>
+            <p class="social-tile__desc">강호에서 인연을 맺고 특별한 버프와 전용 콘텐츠를 즐기세요.</p>
+            <div class="social-tile__stats">
+              <div class="stat-row"><span>수신 신청</span><div class="stat-bar"><div class="stat-fill" style="--p:72%"></div></div></div>
+              <div class="stat-row"><span>재자 맞춤</span><div class="stat-bar"><div class="stat-fill" style="--p:88%"></div></div></div>
+              <div class="stat-row"><span>가성비 점수</span><div class="stat-bar"><div class="stat-fill" style="--p:65%"></div></div></div>
+            </div>
+            <a href="#" class="btn btn--flame btn--sm" style="width:100%;justify-content:center;margin-top:1rem">인연 맺기 →</a>
+          </div>
+        </div>
+
+        <!-- 백전노장 -->
+        <div class="social-tile social-tile--featured" data-reveal>
+          <div class="social-tile__art social-tile__art--guild">
+            <span class="social-tile__icon">🏯</span>
+          </div>
+          <div class="social-tile__body">
+            <span class="social-tile__tag">GUILD · Munpa</span>
+            <h3 class="social-tile__title">백전노장</h3>
+            <p class="social-tile__sub">Guild / 문파 System</p>
+            <p class="social-tile__desc">문파를 이끌고 강호를 제패하세요. 문파 배틀 매주 토요일 개최.</p>
+            <ul class="social-tile__members">
+              <li>
+                <div class="hall__avatar" style="--hue:30;width:28px;height:28px"></div>
+                <span>천마문 (문주: 천마검귀)</span>
+                <span class="social-tile__member-count">128명</span>
+              </li>
+              <li>
+                <div class="hall__avatar" style="--hue:200;width:28px;height:28px"></div>
+                <span>수라문 (문주: 백련도화)</span>
+                <span class="social-tile__member-count">115명</span>
+              </li>
+            </ul>
+            <div class="social-tile__row">
+              <a href="#" class="btn btn--outline btn--sm" style="flex:1;justify-content:center">문파 찾기</a>
+              <a href="#" class="btn btn--outline btn--sm" style="flex:1;justify-content:center">창설하기</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 청출어람 -->
+        <div class="social-tile" data-reveal>
+          <div class="social-tile__art social-tile__art--party">
+            <span class="social-tile__icon">✨</span>
+          </div>
+          <div class="social-tile__body">
+            <span class="social-tile__tag">PARTY · Mentorship</span>
+            <h3 class="social-tile__title">청출어람</h3>
+            <p class="social-tile__sub">Mentorship / Party</p>
+            <p class="social-tile__desc">선배가 후배를 이끄는 귀혼만의 사제 시스템. 파티원을 구하고 함께 성장하세요.</p>
+            <div class="social-tile__party-tags">
+              <span class="party-tag party-tag--flame">● 단사 1</span>
+              <span class="party-tag party-tag--aqua">● 객 1</span>
+            </div>
+            <div class="social-tile__row">
+              <a href="#" class="btn btn--outline btn--sm" style="flex:1;justify-content:center">기운 모집</a>
+              <a href="#" class="btn btn--outline btn--sm" style="flex:1;justify-content:center">파티 참여</a>
+            </div>
+          </div>
+        </div>
+
       </div>
-      <p class="event__reward">보상: 전설 무기 선택권 × 1</p>
-    </article>
+    </div>
+  </section>
 
-    <!-- 6. 커뮤니티 / 소셜 -->
-    <article class="bento__card bento__card--community" id="community" data-reveal>
-      <header class="card-header">
-        <span class="card-header__tag">커뮤니티</span>
-        <h2 class="card-header__title">귀혼 소셜</h2>
-      </header>
-      <div class="social__grid">
-        <a href="#" class="social__item social__item--discord">
-          <span class="social__icon">◈</span>
-          <strong>Discord</strong>
-          <span>128,400 명</span>
-        </a>
-        <a href="#" class="social__item social__item--cafe">
-          <span class="social__icon">◇</span>
-          <strong>네이버 카페</strong>
-          <span>3.2만 명</span>
-        </a>
-        <a href="#" class="social__item social__item--youtube">
-          <span class="social__icon">▷</span>
-          <strong>YouTube</strong>
-          <span>구독자 89만</span>
-        </a>
-        <a href="#" class="social__item social__item--twitter">
-          <span class="social__icon">✕</span>
-          <strong>X (Twitter)</strong>
-          <span>팔로워 45만</span>
-        </a>
+  <!-- ══════════════════════════
+       SUPPORT BAR
+  ══════════════════════════ -->
+  <div class="support-bar" id="support">
+    <div class="support-bar__inner">
+      <div class="support-bar__links">
+        <a href="#">SUPPORT SYSTEM</a>
+        <span class="support-bar__div">|</span>
+        <a href="#">운영 팀</a>
+        <span class="support-bar__div">|</span>
+        <a href="#">길드 관리</a>
+        <span class="support-bar__div">|</span>
+        <a href="#">이벤트 현황</a>
+        <span class="support-bar__div">|</span>
+        <a href="#">결제 내역</a>
+        <span class="support-bar__div">|</span>
+        <a href="#">공식카페</a>
       </div>
-    </article>
+      <div class="support-bar__cta">
+        <a href="#" class="support-bar__chat">💬 1:1 문의</a>
+        <a href="#" class="btn btn--flame btn--sm">▶ 지금 하기</a>
+      </div>
+    </div>
+  </div>
 
-    <!-- 7. 최신 뉴스 피드 -->
-    <article class="bento__card bento__card--feed" data-reveal>
-      <header class="card-header">
-        <span class="card-header__tag">소식</span>
-        <h2 class="card-header__title">최신 업데이트</h2>
-      </header>
-      <ul class="feed__list">
-        <li class="feed__item">
-          <span class="feed__type feed__type--patch">패치</span>
-          <span class="feed__text">2.4.1 핫픽스 — 검귀 스킬 버그 수정</span>
-          <time>07.12</time>
-        </li>
-        <li class="feed__item">
-          <span class="feed__type feed__type--event">이벤트</span>
-          <span class="feed__text">여름 특별 이벤트 '귀신의 밤' 오픈</span>
-          <time>07.10</time>
-        </li>
-        <li class="feed__item">
-          <span class="feed__type feed__type--notice">공지</span>
-          <span class="feed__text">7월 정기 점검 안내 (07.14 04:00~08:00)</span>
-          <time>07.09</time>
-        </li>
-        <li class="feed__item">
-          <span class="feed__type feed__type--patch">패치</span>
-          <span class="feed__text">신규 세계 보스 '천마' 등장</span>
-          <time>07.05</time>
-        </li>
-      </ul>
-    </article>
-
-    <!-- 8. 인용 / 무드 카드 -->
-    <article class="bento__card bento__card--quote" data-reveal>
-      <blockquote class="quote__text">
-        "이 세계에서 혼은<br>결코 사라지지 않는다"
-      </blockquote>
-      <div class="quote__ink"></div>
-    </article>
-
-  </main>
-
-  <!-- ── FOOTER ── -->
+  <!-- ══════════════════════════
+       FOOTER
+  ══════════════════════════ -->
   <footer class="footer">
     <div class="footer__inner">
-      <div class="footer__brand">
-        <span class="nav__logo-kr">귀혼</span>
-        <p>© 2025 귀혼 스튜디오. All rights reserved.</p>
+      <div class="footer__col">
+        <span class="footer__logo">귀혼</span>
+        <p class="footer__copy">© 2025 귀혼 스튜디오<br>All rights reserved.</p>
+        <div class="footer__socials">
+          <a href="#" aria-label="유튜브">▷</a>
+          <a href="#" aria-label="X">✕</a>
+          <a href="#" aria-label="카페">◇</a>
+          <a href="#" aria-label="디스코드">◈</a>
+        </div>
       </div>
-      <nav class="footer__nav">
+      <div class="footer__col">
+        <h4>게임</h4>
+        <ul>
+          <li><a href="#">게임 소개</a></li>
+          <li><a href="#">직업 안내</a></li>
+          <li><a href="#">세계관</a></li>
+          <li><a href="#">시스템 안내</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>커뮤니티</h4>
+        <ul>
+          <li><a href="#">공식 카페</a></li>
+          <li><a href="#">YouTube</a></li>
+          <li><a href="#">Discord</a></li>
+          <li><a href="#">X (Twitter)</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>고객지원</h4>
+        <ul>
+          <li><a href="#">1:1 문의</a></li>
+          <li><a href="#">자주 묻는 질문</a></li>
+          <li><a href="#">이용약관</a></li>
+          <li><a href="#">개인정보처리방침</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span class="footer__rating">이 게임물은 청소년이용불가입니다 (18+)</span>
+      <nav class="footer__policies">
         <a href="#">이용약관</a>
         <a href="#">개인정보처리방침</a>
-        <a href="#">고객센터</a>
         <a href="#">채용</a>
       </nav>
-      <p class="footer__rating">이 게임물은 청소년이용불가입니다</p>
     </div>
   </footer>
 

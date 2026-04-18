@@ -1,117 +1,96 @@
-/* ── NAV scroll state ── */
+/* ── NAV scroll ── */
 const nav = document.getElementById('nav');
+const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 20);
+window.addEventListener('scroll', onScroll, { passive: true });
+
+/* ── Hamburger ── */
+const hamburger = document.getElementById('hamburger');
+const navDrawer  = document.getElementById('navDrawer');
+hamburger?.addEventListener('click', () => {
+  const open = navDrawer.classList.toggle('open');
+  hamburger.setAttribute('aria-expanded', open);
+});
+navDrawer?.querySelectorAll('a').forEach(a =>
+  a.addEventListener('click', () => navDrawer.classList.remove('open'))
+);
+
+/* ── Hero parallax (scroll) ── */
+const heroInk = document.querySelector('.hero__ink');
 window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 40);
+  if (!heroInk) return;
+  const y = window.scrollY;
+  if (y < window.innerHeight) heroInk.style.transform = `translateY(${y * 0.3}px)`;
 }, { passive: true });
 
-/* ── Hero parallax ── */
-const heroParallax = document.getElementById('heroParallax');
-window.addEventListener('mousemove', (e) => {
-  const x = (e.clientX / window.innerWidth - 0.5) * 24;
-  const y = (e.clientY / window.innerHeight - 0.5) * 16;
-  heroParallax.style.transform = `translate(${x}px, ${y}px)`;
-}, { passive: true });
-
-/* ── Scroll parallax for hero layers ── */
-window.addEventListener('scroll', () => {
-  const scrollY = window.scrollY;
-  if (heroParallax && scrollY < window.innerHeight) {
-    heroParallax.style.transform = `translateY(${scrollY * 0.4}px)`;
-  }
-}, { passive: true });
-
-/* ── Reveal on scroll ── */
-const revealObserver = new IntersectionObserver((entries) => {
+/* ── Scroll reveal ── */
+const revealObs = new IntersectionObserver((entries) => {
   entries.forEach((entry, i) => {
     if (entry.isIntersecting) {
-      setTimeout(() => entry.target.classList.add('is-visible'), i * 80);
-      revealObserver.unobserve(entry.target);
+      setTimeout(() => entry.target.classList.add('is-visible'), i * 70);
+      revealObs.unobserve(entry.target);
     }
   });
-}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+}, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('[data-reveal]').forEach(el => revealObs.observe(el));
 
-document.querySelectorAll('[data-reveal]').forEach(el => revealObserver.observe(el));
-
-/* ── Countdown timer ── */
-function updateCountdown() {
-  const target = new Date();
-  target.setDate(target.getDate() + 7);
-  target.setHours(23, 59, 59, 0);
-
-  const now = new Date();
-  const diff = target - now;
-
-  if (diff <= 0) return;
-
-  const days  = Math.floor(diff / 86400000);
-  const hours = Math.floor((diff % 86400000) / 3600000);
-  const mins  = Math.floor((diff % 3600000)  / 60000);
-
-  const pad = n => String(n).padStart(2, '0');
-  document.getElementById('cd-days').textContent  = pad(days);
-  document.getElementById('cd-hours').textContent = pad(hours);
-  document.getElementById('cd-mins').textContent  = pad(mins);
-}
-updateCountdown();
-setInterval(updateCountdown, 30000);
-
-/* ── Online count ticker ── */
-(function animateCount() {
-  const el = document.getElementById('onlineCount');
-  if (!el) return;
-  const base = 24381;
-  setInterval(() => {
-    const delta = Math.floor(Math.random() * 40 - 20);
-    const newVal = Math.max(20000, base + delta);
-    el.textContent = newVal.toLocaleString('ko-KR');
-  }, 3000);
-})();
-
-/* ── Character switcher ── */
-const chars = {
-  검귀: { atk: '92%', def: '55%', spd: '78%', desc: '혼을 담은 검으로 적을 베는 근거리 특화 딜러' },
-  독왕: { atk: '70%', def: '45%', spd: '95%', desc: '맹독으로 적을 서서히 무너뜨리는 기민한 암살자' },
-  화령: { atk: '88%', def: '40%', spd: '65%', desc: '불꽃 혼령을 소환해 광역 피해를 입히는 술사' },
-  빙선: { atk: '60%', def: '80%', spd: '50%', desc: '얼음으로 적을 봉인하는 강력한 제어 특화 지원가' },
-};
-
-document.querySelectorAll('.char-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.char-btn').forEach(b => b.classList.remove('char-btn--active'));
-    btn.classList.add('char-btn--active');
-
-    const key = btn.dataset.char;
-    const data = chars[key];
-    if (!data) return;
-
-    const card = btn.closest('.bento__card--character');
-    const fills = card.querySelectorAll('.stat__fill');
-    const vals  = [data.atk, data.def, data.spd];
-    fills.forEach((fill, i) => {
-      fill.style.setProperty('--pct', '0%');
-      requestAnimationFrame(() => {
-        setTimeout(() => fill.style.setProperty('--pct', vals[i]), 30);
+/* ── Stat bars animate when visible ── */
+const barObs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.querySelectorAll('.stat-fill').forEach(fill => {
+        const p = fill.style.getPropertyValue('--p');
+        fill.style.setProperty('--p', '0%');
+        requestAnimationFrame(() =>
+          setTimeout(() => fill.style.setProperty('--p', p), 50)
+        );
       });
-    });
+      barObs.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.3 });
+document.querySelectorAll('.social-tile').forEach(el => barObs.observe(el));
 
-    card.querySelector('.character__name').textContent = key;
-    card.querySelector('.character__desc').textContent = data.desc;
+/* ── News tabs ── */
+document.querySelectorAll('.tab').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(b => b.classList.remove('tab--active'));
+    btn.classList.add('tab--active');
+    /* filter logic can be extended */
   });
 });
 
-/* ── Hamburger (mobile) ── */
-const hamburger = document.getElementById('hamburger');
-const navLinks  = document.querySelector('.nav__links');
-hamburger?.addEventListener('click', () => {
-  const open = navLinks.style.display === 'flex';
-  navLinks.style.display = open ? 'none' : 'flex';
-  navLinks.style.flexDirection = 'column';
-  navLinks.style.position = 'absolute';
-  navLinks.style.top = '64px';
-  navLinks.style.left = '0';
-  navLinks.style.right = '0';
-  navLinks.style.background = 'var(--ink-1)';
-  navLinks.style.padding = '1.5rem';
-  navLinks.style.gap = '1.25rem';
-  navLinks.style.borderBottom = '1px solid var(--border)';
+/* ── Hall of fame filter pills ── */
+document.querySelectorAll('.hall__filters .pill').forEach(pill => {
+  pill.addEventListener('click', () => {
+    pill.closest('.hall__filters').querySelectorAll('.pill')
+      .forEach(p => p.classList.remove('pill--active'));
+    pill.classList.add('pill--active');
+  });
 });
+
+/* ── Search input focus glow ── */
+document.querySelectorAll('.search-input').forEach(input => {
+  input.addEventListener('keydown', e => {
+    if (e.key === 'Enter') {
+      const q = input.value.trim();
+      if (q) console.log('검색:', q); /* replace with real search */
+    }
+  });
+});
+
+/* ── Live ticker pause on hover already via CSS ── */
+
+/* ── Smooth nav link highlight on section enter ── */
+const sections = document.querySelectorAll('section[id], div[id]');
+const navLinks  = document.querySelectorAll('.nav__links a');
+const sectionObs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      navLinks.forEach(a => {
+        a.style.color = a.getAttribute('href') === `#${id}` ? 'var(--ink)' : '';
+      });
+    }
+  });
+}, { rootMargin: '-40% 0px -55% 0px' });
+sections.forEach(s => sectionObs.observe(s));
