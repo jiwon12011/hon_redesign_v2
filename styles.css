@@ -441,8 +441,18 @@ input { font: inherit; }
   display: grid;
   grid-template-columns: 3fr 2fr;
   gap: 5rem;
-  align-items: start;
+  align-items: stretch;   /* 양 컬럼 높이 통일 */
 }
+/* 양쪽 컬럼 모두 flex column으로 */
+.split__left,
+.split__right {
+  display: flex;
+  flex-direction: column;
+}
+/* 왼쪽: 전체소식 버튼 하단 고정 */
+.split__left > .btn { margin-top: auto; }
+/* 오른쪽: 라운지 카드를 맨 아래로 밀어 왼쪽 버튼과 하단 정렬 */
+.split__right .lounge-cards { margin-top: auto; }
 
 /* LEFT news */
 .news__tabs {
@@ -597,12 +607,13 @@ input { font: inherit; }
 }
 .lounge-card__art {
   position: relative;
-  width: 80px;
+  width: 96px;
   flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  min-height: 100px;   /* 카드 최소 높이 확보 */
 }
 .lounge-card__art--lounge {
   background: linear-gradient(145deg, #1a0d20, #3a1020, #0d1a2a);
