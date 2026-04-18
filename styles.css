@@ -381,41 +381,51 @@ input { font: inherit; }
   background: var(--white);
   border-bottom: 1px solid var(--border);
   height: 44px;
-  overflow: hidden;
-}
-.ticker__inner {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  height: 100%;
   display: flex;
   align-items: center;
-  padding: 0 2rem;
-  gap: 1rem;
 }
-.ticker__tags { display: flex; gap: .4rem; flex-shrink: 0; }
+.ticker__tags {
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  flex-shrink: 0;
+  padding: 0 1.25rem 0 2rem;
+  border-right: 1px solid var(--border);
+  height: 100%;
+}
 .ticker__tag {
   font-size: .65rem;
   font-weight: 700;
   padding: .2rem .55rem;
   border-radius: 99px;
   letter-spacing: .05em;
+  white-space: nowrap;
 }
 .ticker__tag--flame  { background: var(--flame-dim); color: var(--flame); }
 .ticker__tag--aqua   { background: var(--aqua-dim);  color: #1aadbe; }
 .ticker__tag--gray   { background: #f0ece4; color: var(--muted); }
 
+/* scroll container — overflow:hidden here clips the moving text */
+.ticker__scroll {
+  flex: 1;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 1.25rem;
+}
 .ticker__track {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 2rem;
   white-space: nowrap;
-  animation: tickerScroll 28s linear infinite;
   font-size: .82rem;
   color: var(--muted);
-  overflow: hidden;
+  animation: tickerScroll 32s linear infinite;
+  will-change: transform;
 }
-.ticker__track:hover { animation-play-state: paused; }
-.ticker__sep { color: var(--flame); font-size: .7rem; }
+.ticker__scroll:hover .ticker__track { animation-play-state: paused; }
+.ticker__sep { color: var(--flame); font-size: .65rem; flex-shrink: 0; }
 @keyframes tickerScroll {
   0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
@@ -561,6 +571,77 @@ input { font: inherit; }
 .hot-list__body h4 { font-size: .875rem; font-weight: 600; line-height: 1.45; }
 .hot-list__meta { font-size: .72rem; color: var(--muted); margin-top: .2rem; display: block; }
 .hot-list__score { font-size: .72rem; color: var(--flame); font-family: var(--font-num); white-space: nowrap; }
+
+/* ── 귀혼M 라운지 카드 ── */
+.lounge-card {
+  display: flex;
+  align-items: stretch;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  margin-top: 1.25rem;
+  transition: box-shadow .25s, transform .25s;
+  text-decoration: none;
+  color: inherit;
+  background: var(--white);
+}
+.lounge-card:hover {
+  box-shadow: 0 10px 36px rgba(223,70,32,.1);
+  transform: translateY(-3px);
+  border-color: var(--flame);
+}
+.lounge-card__art {
+  position: relative;
+  width: 110px;
+  flex-shrink: 0;
+  background: linear-gradient(145deg, #1a0d20, #3a1020, #0d1a2a);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.lounge-card__icon { font-size: 2rem; position: relative; z-index: 1; }
+.lounge-card__glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(223,70,32,.3), transparent 70%);
+  animation: glowPulse 2.5s ease-in-out infinite alternate;
+}
+@keyframes glowPulse {
+  from { opacity: .5; }
+  to   { opacity: 1; }
+}
+.lounge-card__body {
+  flex: 1;
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: .25rem;
+}
+.lounge-card__tag {
+  font-size: .62rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--flame);
+  font-weight: 700;
+}
+.lounge-card__title {
+  font-size: .95rem;
+  font-weight: 800;
+  color: var(--ink);
+}
+.lounge-card__desc {
+  font-size: .77rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+.lounge-card__cta {
+  font-size: .78rem;
+  font-weight: 600;
+  color: var(--flame);
+  margin-top: .25rem;
+}
 
 /* ══════════════════════════════════════════
    HONOR SECTION — 명예와 비급
