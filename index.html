@@ -254,19 +254,34 @@
       </ol>
       <a href="#" class="btn btn--outline btn--sm" style="margin-top:1.5rem">커뮤니티 전체 →</a>
 
-      <!-- 귀혼M 라운지 바로가기 카드 -->
-      <a href="#" class="lounge-card" data-reveal>
-        <div class="lounge-card__art">
-          <span class="lounge-card__icon">🏮</span>
-          <div class="lounge-card__glow"></div>
-        </div>
-        <div class="lounge-card__body">
-          <span class="lounge-card__tag">LIVE LOUNGE</span>
-          <h3 class="lounge-card__title">귀혼M 라운지</h3>
-          <p class="lounge-card__desc">지금 이 순간 강호 유저들의 실시간 이야기</p>
-          <span class="lounge-card__cta">바로가기 →</span>
-        </div>
-      </a>
+      <!-- 하단 2열 카드 -->
+      <div class="lounge-cards" data-reveal>
+        <!-- 귀혼M 라운지 -->
+        <a href="#" class="lounge-card">
+          <div class="lounge-card__art lounge-card__art--lounge">
+            <span class="lounge-card__icon">🏮</span>
+            <div class="lounge-card__glow"></div>
+          </div>
+          <div class="lounge-card__body">
+            <span class="lounge-card__tag">LIVE LOUNGE</span>
+            <h3 class="lounge-card__title">귀혼M 라운지</h3>
+            <p class="lounge-card__desc">지금 이 순간 강호 유저들의 실시간 이야기</p>
+            <span class="lounge-card__cta">바로가기 →</span>
+          </div>
+        </a>
+        <!-- 신규/복귀 유저 혜택 -->
+        <a href="#" class="lounge-card lounge-card--benefit">
+          <div class="lounge-card__art lounge-card__art--benefit">
+            <span class="lounge-card__icon">🎁</span>
+          </div>
+          <div class="lounge-card__body">
+            <span class="lounge-card__tag">SPECIAL OFFER</span>
+            <h3 class="lounge-card__title">신규&amp;복귀 혜택</h3>
+            <p class="lounge-card__desc">돌아온 강호를 위한 특별 패키지 확인</p>
+            <span class="lounge-card__cta">혜택 보기 →</span>
+          </div>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -328,35 +343,45 @@
           <a href="#" class="btn btn--outline btn--sm" style="margin-top:1rem">전체 랭킹 →</a>
         </div>
 
-        <!-- 강호 검색 -->
+        <!-- 문파 검색 -->
         <div class="honor-card honor-card--search" data-reveal>
           <header class="card-header">
-            <h3 class="card-title">강호 검색</h3>
+            <h3 class="card-title">문파 검색</h3>
+            <span class="card-sub">Guild / 문파</span>
           </header>
           <div class="search-box">
-            <input type="search" placeholder="캐릭터 이름 검색…" class="search-input" />
+            <input type="search" placeholder="문파 이름 검색…" class="search-input" id="guildSearch" />
             <button class="search-btn" aria-label="검색">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
             </button>
           </div>
           <ul class="search-results">
             <li class="search-result">
-              <div class="hall__avatar" style="--hue:150;width:32px;height:32px"></div>
-              <div>
-                <strong>독행마인</strong>
-                <span>현무 · Lv.205 독왕</span>
+              <div class="guild-emblem" style="--hue:30">天</div>
+              <div class="search-result__info">
+                <strong>천마문</strong>
+                <span>청룡 서버 · 128명 · Lv.45</span>
               </div>
-              <button class="pill">보기</button>
+              <button class="pill">가입</button>
             </li>
             <li class="search-result">
-              <div class="hall__avatar" style="--hue:340;width:32px;height:32px"></div>
-              <div>
-                <strong>설화빙령</strong>
-                <span>청룡 · Lv.203 빙선</span>
+              <div class="guild-emblem" style="--hue:200">水</div>
+              <div class="search-result__info">
+                <strong>수라문</strong>
+                <span>백호 서버 · 115명 · Lv.42</span>
               </div>
-              <button class="pill">보기</button>
+              <button class="pill">가입</button>
+            </li>
+            <li class="search-result">
+              <div class="guild-emblem" style="--hue:150">華</div>
+              <div class="search-result__info">
+                <strong>화산파</strong>
+                <span>주작 서버 · 98명 · Lv.38</span>
+              </div>
+              <button class="pill">가입</button>
             </li>
           </ul>
+          <a href="#" class="btn btn--outline btn--sm" style="width:100%;justify-content:center;margin-top:auto;padding-top:.75rem">문파 전체 보기 →</a>
         </div>
 
         <!-- 강호의 비급 (beginner guide) -->
@@ -366,25 +391,41 @@
             <span class="card-sub">신규 &amp; 복귀 유저 필독 가이드</span>
           </header>
           <div class="guide-grid">
-            <a href="#" class="guide-item" data-reveal>
-              <div class="guide-item__icon guide-item__icon--1">⚔</div>
-              <strong>첫 무공 선택</strong>
-              <span>직업별 특성과 추천 빌드</span>
+            <a href="#" class="guide-item">
+              <div class="guide-item__img guide-item__img--1">
+                <span class="guide-item__emoji">⚔️</span>
+              </div>
+              <div class="guide-item__text">
+                <strong>첫 무공 선택</strong>
+                <span>직업별 특성과 추천 빌드</span>
+              </div>
             </a>
-            <a href="#" class="guide-item" data-reveal>
-              <div class="guide-item__icon guide-item__icon--2">🏯</div>
-              <strong>강호 입문 퀘스트</strong>
-              <span>스토리 흐름과 보상 정리</span>
+            <a href="#" class="guide-item">
+              <div class="guide-item__img guide-item__img--2">
+                <span class="guide-item__emoji">🏯</span>
+              </div>
+              <div class="guide-item__text">
+                <strong>강호 입문 퀘스트</strong>
+                <span>스토리 흐름과 보상 정리</span>
+              </div>
             </a>
-            <a href="#" class="guide-item" data-reveal>
-              <div class="guide-item__icon guide-item__icon--3">👥</div>
-              <strong>문파 가입 방법</strong>
-              <span>혜택과 활동 콘텐츠 안내</span>
+            <a href="#" class="guide-item">
+              <div class="guide-item__img guide-item__img--3">
+                <span class="guide-item__emoji">👥</span>
+              </div>
+              <div class="guide-item__text">
+                <strong>문파 가입 방법</strong>
+                <span>혜택과 활동 콘텐츠 안내</span>
+              </div>
             </a>
-            <a href="#" class="guide-item" data-reveal>
-              <div class="guide-item__icon guide-item__icon--4">💎</div>
-              <strong>귀혼석 효율 사용법</strong>
-              <span>초보자 필수 경제 가이드</span>
+            <a href="#" class="guide-item">
+              <div class="guide-item__img guide-item__img--4">
+                <span class="guide-item__emoji">💎</span>
+              </div>
+              <div class="guide-item__text">
+                <strong>귀혼석 효율 사용법</strong>
+                <span>초보자 필수 경제 가이드</span>
+              </div>
             </a>
           </div>
         </div>
@@ -411,16 +452,20 @@
             <span class="social-tile__icon">💍</span>
           </div>
           <div class="social-tile__body">
-            <span class="social-tile__tag">LOVE · 인연</span>
-            <h3 class="social-tile__title">천생연분</h3>
-            <p class="social-tile__sub">Marriage System</p>
-            <p class="social-tile__desc">강호에서 인연을 맺고 특별한 버프와 전용 콘텐츠를 즐기세요.</p>
-            <div class="social-tile__stats">
-              <div class="stat-row"><span>수신 신청</span><div class="stat-bar"><div class="stat-fill" style="--p:72%"></div></div></div>
-              <div class="stat-row"><span>재자 맞춤</span><div class="stat-bar"><div class="stat-fill" style="--p:88%"></div></div></div>
-              <div class="stat-row"><span>가성비 점수</span><div class="stat-bar"><div class="stat-fill" style="--p:65%"></div></div></div>
+            <div class="social-tile__top">
+              <span class="social-tile__tag">LOVE · 인연</span>
+              <h3 class="social-tile__title">천생연분</h3>
+              <p class="social-tile__sub">Marriage System</p>
+              <p class="social-tile__desc">강호에서 인연을 맺고 특별한 버프와 전용 콘텐츠를 즐기세요.</p>
+              <div class="social-tile__stats">
+                <div class="stat-row"><span>수신 신청</span><div class="stat-bar"><div class="stat-fill" style="--p:72%"></div></div></div>
+                <div class="stat-row"><span>재자 맞춤</span><div class="stat-bar"><div class="stat-fill" style="--p:88%"></div></div></div>
+                <div class="stat-row"><span>가성비 점수</span><div class="stat-bar"><div class="stat-fill" style="--p:65%"></div></div></div>
+              </div>
             </div>
-            <a href="#" class="btn btn--flame btn--sm" style="width:100%;justify-content:center;margin-top:1rem">인연 맺기 →</a>
+            <div class="social-tile__bottom">
+              <a href="#" class="btn btn--flame btn--sm" style="width:100%;justify-content:center">인연 맺기 →</a>
+            </div>
           </div>
         </div>
 
@@ -430,25 +475,34 @@
             <span class="social-tile__icon">🏯</span>
           </div>
           <div class="social-tile__body">
-            <span class="social-tile__tag">GUILD · Munpa</span>
-            <h3 class="social-tile__title">백전노장</h3>
-            <p class="social-tile__sub">Guild / 문파 System</p>
-            <p class="social-tile__desc">문파를 이끌고 강호를 제패하세요. 문파 배틀 매주 토요일 개최.</p>
-            <ul class="social-tile__members">
-              <li>
-                <div class="hall__avatar" style="--hue:30;width:28px;height:28px"></div>
-                <span>천마문 (문주: 천마검귀)</span>
-                <span class="social-tile__member-count">128명</span>
-              </li>
-              <li>
-                <div class="hall__avatar" style="--hue:200;width:28px;height:28px"></div>
-                <span>수라문 (문주: 백련도화)</span>
-                <span class="social-tile__member-count">115명</span>
-              </li>
-            </ul>
-            <div class="social-tile__row">
-              <a href="#" class="btn btn--outline btn--sm" style="flex:1;justify-content:center">문파 찾기</a>
-              <a href="#" class="btn btn--outline btn--sm" style="flex:1;justify-content:center">창설하기</a>
+            <div class="social-tile__top">
+              <span class="social-tile__tag">GUILD · Munpa</span>
+              <h3 class="social-tile__title">백전노장</h3>
+              <p class="social-tile__sub">Guild / 문파 System</p>
+              <p class="social-tile__desc">문파를 이끌고 강호를 제패하세요. 문파 배틀 매주 토요일 개최.</p>
+              <ul class="social-tile__members">
+                <li>
+                  <div class="hall__avatar" style="--hue:30;width:28px;height:28px;flex-shrink:0"></div>
+                  <span>천마문 (문주: 천마검귀)</span>
+                  <span class="social-tile__member-count">128명</span>
+                </li>
+                <li>
+                  <div class="hall__avatar" style="--hue:200;width:28px;height:28px;flex-shrink:0"></div>
+                  <span>수라문 (문주: 백련도화)</span>
+                  <span class="social-tile__member-count">115명</span>
+                </li>
+                <li>
+                  <div class="hall__avatar" style="--hue:150;width:28px;height:28px;flex-shrink:0"></div>
+                  <span>화산파 (문주: 화산제일검)</span>
+                  <span class="social-tile__member-count">98명</span>
+                </li>
+              </ul>
+            </div>
+            <div class="social-tile__bottom">
+              <div class="social-tile__row">
+                <a href="#" class="btn btn--flame btn--sm" style="flex:1;justify-content:center">문파 찾기</a>
+                <a href="#" class="btn btn--outline btn--sm" style="flex:1;justify-content:center">창설하기</a>
+              </div>
             </div>
           </div>
         </div>
@@ -459,17 +513,29 @@
             <span class="social-tile__icon">✨</span>
           </div>
           <div class="social-tile__body">
-            <span class="social-tile__tag">PARTY · Mentorship</span>
-            <h3 class="social-tile__title">청출어람</h3>
-            <p class="social-tile__sub">Mentorship / Party</p>
-            <p class="social-tile__desc">선배가 후배를 이끄는 귀혼만의 사제 시스템. 파티원을 구하고 함께 성장하세요.</p>
-            <div class="social-tile__party-tags">
-              <span class="party-tag party-tag--flame">● 단사 1</span>
-              <span class="party-tag party-tag--aqua">● 객 1</span>
+            <div class="social-tile__top">
+              <span class="social-tile__tag">PARTY · Mentorship</span>
+              <h3 class="social-tile__title">청출어람</h3>
+              <p class="social-tile__sub">Mentorship / Party</p>
+              <p class="social-tile__desc">선배가 후배를 이끄는 귀혼만의 사제 시스템. 파티원을 구하고 함께 성장하세요.</p>
+              <div class="social-tile__party-status">
+                <div class="party-slot party-slot--filled">
+                  <span class="party-slot__role">단사</span>
+                  <span class="party-slot__name">화산제일검</span>
+                  <span class="party-tag party-tag--flame">모집완료</span>
+                </div>
+                <div class="party-slot party-slot--open">
+                  <span class="party-slot__role">객</span>
+                  <span class="party-slot__name">모집 중…</span>
+                  <span class="party-tag party-tag--aqua">모집중</span>
+                </div>
+              </div>
             </div>
-            <div class="social-tile__row">
-              <a href="#" class="btn btn--outline btn--sm" style="flex:1;justify-content:center">기운 모집</a>
-              <a href="#" class="btn btn--outline btn--sm" style="flex:1;justify-content:center">파티 참여</a>
+            <div class="social-tile__bottom">
+              <div class="social-tile__row">
+                <a href="#" class="btn btn--flame btn--sm" style="flex:1;justify-content:center">기운 모집</a>
+                <a href="#" class="btn btn--outline btn--sm" style="flex:1;justify-content:center">파티 참여</a>
+              </div>
             </div>
           </div>
         </div>
