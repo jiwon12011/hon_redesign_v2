@@ -995,6 +995,8 @@ input { font: inherit; }
 .support-bar__cta { display: flex; align-items: center; gap: .85rem; }
 .support-bar__chat { font-size: .8rem; color: var(--aqua); transition: opacity .18s; }
 .support-bar__chat:hover { opacity: .8; }
+.support-bar__goto { font-size: .8rem; color: rgba(255,255,255,.4); transition: color .18s; }
+.support-bar__goto:hover { color: rgba(255,255,255,.75); }
 
 /* ══════════════════════════════════════════
    FOOTER
