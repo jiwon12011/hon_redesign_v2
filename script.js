@@ -78,6 +78,81 @@ document.querySelectorAll('.search-input').forEach(input => {
   });
 });
 
+/* ── Class selector ── */
+const classData = {
+  검귀: {
+    desc: '혼을 담은 검으로 적을 베는 근거리 특화 딜러. 빠른 콤보와 강력한 단일 타격이 특기.',
+    stats: [92, 55, 78, 60],
+    hue: '0',
+    emoji: '⚔️',
+  },
+  독왕: {
+    desc: '맹독으로 적을 서서히 무너뜨리는 기민한 암살자. 지속 피해와 회피 특기.',
+    stats: [70, 45, 95, 75],
+    hue: '120',
+    emoji: '☠️',
+  },
+  화령: {
+    desc: '불꽃 혼령을 소환해 광역 피해를 입히는 술사. 강력한 범위기로 전장을 지배.',
+    stats: [88, 40, 65, 50],
+    hue: '30',
+    emoji: '🔥',
+  },
+  빙선: {
+    desc: '얼음으로 적을 봉인하는 강력한 제어 특화 지원가. 파티 시너지 최고.',
+    stats: [60, 80, 50, 90],
+    hue: '200',
+    emoji: '❄️',
+  },
+};
+
+const classTabs  = document.querySelectorAll('.class-tab');
+const className  = document.getElementById('className');
+const classDesc  = document.getElementById('classDesc');
+const classStats = document.getElementById('classStats');
+const classImg   = document.getElementById('classImgPlaceholder');
+const classSection = document.querySelector('.class-section');
+
+function switchClass(key) {
+  const d = classData[key];
+  if (!d) return;
+
+  // tab UI
+  classTabs.forEach(t => t.classList.toggle('class-tab--active', t.dataset.class === key));
+
+  // text
+  className.textContent = key;
+  classDesc.textContent = d.desc;
+  classImg.textContent  = d.emoji;
+
+  // stats animate
+  const fills = classStats.querySelectorAll('.class-stat__fill');
+  const vals  = classStats.querySelectorAll('.class-stat__val');
+  fills.forEach((f, i) => {
+    f.style.setProperty('--p', '0%');
+    requestAnimationFrame(() =>
+      setTimeout(() => {
+        f.style.setProperty('--p', d.stats[i] + '%');
+        if (vals[i]) vals[i].textContent = d.stats[i];
+      }, 30 + i * 40)
+    );
+  });
+
+  // section ambient glow
+  if (classSection) {
+    classSection.style.setProperty('--class-hue', d.hue);
+    classSection.style.background = `radial-gradient(ellipse 60% 50% at 70% 50%, hsl(${d.hue},60%,18%) 0%, #0d0d16 60%)`;
+  }
+  // stat bar color
+  fills.forEach(f => {
+    f.style.background = `linear-gradient(90deg, hsl(${d.hue},80%,50%), hsl(${Number(d.hue)+30},80%,65%))`;
+  });
+}
+
+classTabs.forEach(btn => {
+  btn.addEventListener('click', () => switchClass(btn.dataset.class));
+});
+
 /* ── Live ticker pause on hover already via CSS ── */
 
 /* ── Smooth nav link highlight on section enter ── */
