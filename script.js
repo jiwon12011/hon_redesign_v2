@@ -80,55 +80,49 @@ document.querySelectorAll('.search-input').forEach(input => {
 
 /* ── Class selector ── */
 const classData = {
-  검귀: {
-    desc: '혼을 담은 검으로 적을 베는 근거리 특화 딜러. 빠른 콤보와 강력한 단일 타격이 특기.',
-    stats: [92, 55, 78, 60],
-    hue: '0',
-    emoji: '⚔️',
-  },
-  독왕: {
-    desc: '맹독으로 적을 서서히 무너뜨리는 기민한 암살자. 지속 피해와 회피 특기.',
-    stats: [70, 45, 95, 75],
-    hue: '120',
-    emoji: '☠️',
-  },
-  화령: {
-    desc: '불꽃 혼령을 소환해 광역 피해를 입히는 술사. 강력한 범위기로 전장을 지배.',
-    stats: [88, 40, 65, 50],
-    hue: '30',
-    emoji: '🔥',
-  },
-  빙선: {
-    desc: '얼음으로 적을 봉인하는 강력한 제어 특화 지원가. 파티 시너지 최고.',
-    stats: [60, 80, 50, 90],
-    hue: '200',
-    emoji: '❄️',
-  },
+  /* 중원 */
+  무사:   { faction:'중원', desc:'강호를 지키는 정파의 검사. 강인한 체력과 정교한 검술로 전장 최전선을 담당한다.', stats:[88,70,72,80], hue:'25',  emoji:'⚔️' },
+  자객:   { faction:'중원', desc:'그림자 속에서 단숨에 적의 숨통을 끊는 암살 특화 직업. 기습과 독침이 주무기.', stats:[85,35,98,55], hue:'150', emoji:'🗡️' },
+  도사:   { faction:'중원', desc:'하늘의 이치를 읽고 부적과 술법으로 적을 제압하는 도교 술사.', stats:[90,45,60,65], hue:'45',  emoji:'☯️' },
+  역사:   { faction:'중원', desc:'타고난 괴력과 두터운 갑옷으로 파티를 지키는 최강의 방어 전사.', stats:[75,95,48,85], hue:'10',  emoji:'💪' },
+  사수:   { faction:'중원', desc:'원거리에서 정확한 화살로 적을 제압하는 원거리 딜러. 이동하며 전투가 가능.', stats:[82,40,88,60], hue:'200', emoji:'🏹' },
+  군사:   { faction:'중원', desc:'전략과 지휘로 파티 전체를 강화하는 지원 특화 직업. 버프와 디버프의 달인.', stats:[55,65,65,92], hue:'220', emoji:'🛡️' },
+  /* 마교 */
+  아사신: { faction:'마교', desc:'마교의 그림자 첩자. 환영술과 독으로 적을 혼란에 빠트리는 위험한 암살자.', stats:[92,28,96,50], hue:'280', emoji:'🌑' },
+  마기:   { faction:'마교', desc:'금지된 마력을 다루는 술사. 파괴적인 광역기와 저주 마법으로 전장을 불태운다.', stats:[95,30,58,45], hue:'300', emoji:'🔮' },
+  예니체리:{ faction:'마교', desc:'마교의 정예 전투부대. 화약 무기와 마력을 결합한 중거리 전투 전문가.', stats:[80,55,80,70], hue:'260', emoji:'⚡' },
 };
 
-const classTabs  = document.querySelectorAll('.class-tab');
-const className  = document.getElementById('className');
-const classDesc  = document.getElementById('classDesc');
-const classStats = document.getElementById('classStats');
-const classImg   = document.getElementById('classImgPlaceholder');
+const classTabs    = document.querySelectorAll('.class-tab');
+const className    = document.getElementById('className');
+const classFaction = document.getElementById('classFaction');
+const classDesc    = document.getElementById('classDesc');
+const classStats   = document.getElementById('classStats');
+const classImg     = document.getElementById('classImgPlaceholder');
 const classSection = document.querySelector('.class-section');
+
+const factionColor = { '중원': '#e8c97a', '마교': '#c47aff' };
 
 function switchClass(key) {
   const d = classData[key];
   if (!d) return;
 
-  // tab UI
   classTabs.forEach(t => t.classList.toggle('class-tab--active', t.dataset.class === key));
 
-  // text
-  className.textContent = key;
-  classDesc.textContent = d.desc;
-  classImg.textContent  = d.emoji;
+  className.textContent    = key;
+  classDesc.textContent    = d.desc;
+  classImg.textContent     = d.emoji;
+  classFaction.textContent = d.faction;
+  classFaction.style.color = factionColor[d.faction] || 'var(--flame)';
 
-  // stats animate
   const fills = classStats.querySelectorAll('.class-stat__fill');
   const vals  = classStats.querySelectorAll('.class-stat__val');
+  const barColor = d.faction === '마교'
+    ? `linear-gradient(90deg, hsl(${d.hue},70%,55%), hsl(${Number(d.hue)+30},70%,70%))`
+    : `linear-gradient(90deg, hsl(${d.hue},80%,50%), hsl(${Number(d.hue)+30},80%,65%))`;
+
   fills.forEach((f, i) => {
+    f.style.background = barColor;
     f.style.setProperty('--p', '0%');
     requestAnimationFrame(() =>
       setTimeout(() => {
@@ -138,20 +132,13 @@ function switchClass(key) {
     );
   });
 
-  // section ambient glow
   if (classSection) {
-    classSection.style.setProperty('--class-hue', d.hue);
-    classSection.style.background = `radial-gradient(ellipse 60% 50% at 70% 50%, hsl(${d.hue},60%,18%) 0%, #0d0d16 60%)`;
+    classSection.style.background =
+      `radial-gradient(ellipse 60% 50% at 70% 50%, hsl(${d.hue},50%,15%) 0%, #0d0d16 65%)`;
   }
-  // stat bar color
-  fills.forEach(f => {
-    f.style.background = `linear-gradient(90deg, hsl(${d.hue},80%,50%), hsl(${Number(d.hue)+30},80%,65%))`;
-  });
 }
 
-classTabs.forEach(btn => {
-  btn.addEventListener('click', () => switchClass(btn.dataset.class));
-});
+classTabs.forEach(btn => btn.addEventListener('click', () => switchClass(btn.dataset.class)));
 
 /* ── Live ticker pause on hover already via CSS ── */
 

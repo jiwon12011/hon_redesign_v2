@@ -1172,23 +1172,46 @@ input { font: inherit; }
 .class-tabs {
   display: flex;
   flex-direction: column;
-  gap: .65rem;
+  gap: 1.5rem;
 }
+.class-faction { display: flex; flex-direction: column; gap: .5rem; }
+.class-faction__label {
+  font-size: .65rem;
+  font-weight: 800;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  padding: .3rem .6rem;
+  border-radius: 4px;
+  margin-bottom: .25rem;
+  display: inline-block;
+  align-self: flex-start;
+}
+.class-faction__label--jung {
+  color: #e8c97a;
+  background: rgba(232,201,122,.12);
+  border: 1px solid rgba(232,201,122,.2);
+}
+.class-faction__label--ma {
+  color: #c47aff;
+  background: rgba(196,122,255,.12);
+  border: 1px solid rgba(196,122,255,.2);
+}
+.class-faction__list { display: flex; flex-direction: column; gap: .4rem; }
 .class-tab {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  padding: 1rem 1.25rem;
-  border-radius: var(--radius-md);
-  border: 1.5px solid rgba(255,255,255,.08);
+  gap: .75rem;
+  padding: .65rem 1rem;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid rgba(255,255,255,.07);
   background: rgba(255,255,255,.03);
-  color: rgba(255,255,255,.5);
+  color: rgba(255,255,255,.45);
   text-align: left;
-  transition: all .25s var(--ease-out);
+  transition: all .2s var(--ease-out);
   cursor: pointer;
 }
 .class-tab:hover {
-  border-color: rgba(255,255,255,.2);
+  border-color: rgba(255,255,255,.18);
   background: rgba(255,255,255,.06);
   color: rgba(255,255,255,.85);
 }
@@ -1196,12 +1219,17 @@ input { font: inherit; }
   border-color: var(--flame);
   background: rgba(223,70,32,.1);
   color: #fff;
-  box-shadow: 0 0 20px rgba(223,70,32,.15);
+  box-shadow: 0 0 16px rgba(223,70,32,.12);
 }
-.class-tab__icon { font-size: 1.5rem; flex-shrink: 0; }
-.class-tab__name { font-size: 1rem; font-weight: 700; display: block; line-height: 1.2; }
-.class-tab__role { font-size: .72rem; color: rgba(255,255,255,.4); display: block; margin-top: .15rem; }
-.class-tab--active .class-tab__role { color: rgba(255,255,255,.6); }
+.class-tab[data-faction="ma"].class-tab--active {
+  border-color: #c47aff;
+  background: rgba(196,122,255,.1);
+  box-shadow: 0 0 16px rgba(196,122,255,.12);
+}
+.class-tab__icon { font-size: 1.1rem; flex-shrink: 0; width: 1.4rem; text-align: center; }
+.class-tab__name { font-size: .88rem; font-weight: 700; display: block; line-height: 1.2; }
+.class-tab__role { font-size: .68rem; color: rgba(255,255,255,.35); display: block; margin-top: .1rem; }
+.class-tab--active .class-tab__role { color: rgba(255,255,255,.55); }
 
 /* 우측 직업 상세 */
 .class-display {
@@ -1231,6 +1259,15 @@ input { font: inherit; }
   /* 실제 캐릭터 이미지 교체:
      background-image: url('assets/char-검귀.webp');
      background-size: cover; background-position: top center; */
+}
+.class-display__faction {
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--flame);
+  margin-bottom: .4rem;
+  transition: color .3s;
 }
 .class-display__name {
   font-size: clamp(2.5rem, 5vw, 4rem);
